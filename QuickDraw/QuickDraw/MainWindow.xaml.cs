@@ -18,8 +18,26 @@ namespace QuickDraw {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+
+        ExerciseViewer CurrentExerciseViewer = new ExerciseViewer(new Exercise("Test"));
+
         public MainWindow() {
             InitializeComponent();
+            this.DataContext = CurrentExerciseViewer;
+        }
+
+        private void CountLabel_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
+            CurrentExerciseViewer.ResetCount();
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e) {
+            if (!CurrentExerciseViewer.Running && CurrentExerciseViewer.HasImages()) {
+                StartButton.Content = "Stop";
+                CurrentExerciseViewer.ToggleTimer();
+            } else if (CurrentExerciseViewer.Running) {
+                StartButton.Content = "Start";
+                CurrentExerciseViewer.ToggleTimer();
+            }
         }
     }
 }
