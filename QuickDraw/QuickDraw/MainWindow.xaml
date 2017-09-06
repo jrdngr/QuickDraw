@@ -25,10 +25,10 @@
             <Button x:Name="StartButton" Content="Start" Grid.Column="1" Margin="10.333,0,0,10" Height="29" VerticalAlignment="Bottom" Background="#FF3A3A3A" BorderBrush="#FF828282" Foreground="White" HorizontalAlignment="Left" Width="97" FontSize="18" Click="StartButton_Click"/>
             <Label x:Name="CountLabel" Content="{Binding CurrentCount}" Grid.Column="1" Margin="10.333,0,0,44" Foreground="White" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="33" VerticalAlignment="Bottom" Padding="0" HorizontalAlignment="Left" Width="97" MouseDoubleClick="CountLabel_MouseDoubleClick"/>
         </Grid>
-        <Grid x:Name="TopControlsGrid" HorizontalAlignment="Center" Height="41" VerticalAlignment="Top" Width="256" Background="#FF252525">
-            <Button x:Name="ConfigureButton" Content="Configure" HorizontalAlignment="Left" Margin="159,10,0,0" VerticalAlignment="Top" Width="87" Background="#FF3A3A3A" BorderBrush="#FF828282" Foreground="White" Height="21"/>
-            <Button x:Name="NextImageButton" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="55,10,0,0" VerticalAlignment="Top" Width="40" Background="#FF3A3A3A" BorderBrush="#FF828282" Foreground="White" Height="21"/>
-            <Button x:Name="PreviousImageButton" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="40" Background="#FF3A3A3A" BorderBrush="#FF828282" Foreground="White" Height="21"/>
+        <Grid x:Name="TopControlsGrid" HorizontalAlignment="Center" Height="41" VerticalAlignment="Top" Width="268" Background="#FF252525">
+            <Button x:Name="ConfigureButton" Content="Configure" HorizontalAlignment="Left" Margin="159,10,0,0" VerticalAlignment="Top" Width="87" Background="#FF3A3A3A" BorderBrush="#FF828282" Foreground="White" Height="21" Click="ConfigureButton_Click"/>
+            <Button x:Name="NextImageButton" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="55,10,0,0" VerticalAlignment="Top" Width="40" Background="#FF3A3A3A" BorderBrush="#FF828282" Foreground="White" Height="21" Click="NextImageButton_Click"/>
+            <Button x:Name="PreviousImageButton" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="40" Background="#FF3A3A3A" BorderBrush="#FF828282" Foreground="White" Height="21" IsEnabled="False"/>
         </Grid>
 
     </Grid>

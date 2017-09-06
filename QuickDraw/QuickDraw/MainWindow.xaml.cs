@@ -19,7 +19,7 @@ namespace QuickDraw {
     /// </summary>
     public partial class MainWindow : Window {
 
-        ExerciseViewer CurrentExerciseViewer = new ExerciseViewer(new Exercise("Test"));
+        ExerciseViewer CurrentExerciseViewer = new ExerciseViewer(new Exercise());
 
         public MainWindow() {
             InitializeComponent();
@@ -38,6 +38,14 @@ namespace QuickDraw {
                 StartButton.Content = "Start";
                 CurrentExerciseViewer.ToggleTimer();
             }
+        }
+
+        private void ConfigureButton_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void NextImageButton_Click(object sender, RoutedEventArgs e) {
+            CurrentExerciseViewer.SetNextImage();
         }
     }
 }
