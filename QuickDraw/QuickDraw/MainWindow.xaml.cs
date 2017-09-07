@@ -20,6 +20,7 @@ namespace QuickDraw {
     public partial class MainWindow : Window {
 
         ExerciseViewer CurrentExerciseViewer = new ExerciseViewer(new Exercise());
+        ExerciseEditorWindow EditorWindow;
 
         public MainWindow() {
             InitializeComponent();
@@ -40,12 +41,17 @@ namespace QuickDraw {
             }
         }
 
-        private void ConfigureButton_Click(object sender, RoutedEventArgs e) {
-
-        }
-
         private void NextImageButton_Click(object sender, RoutedEventArgs e) {
             CurrentExerciseViewer.SetNextImage();
+        }
+
+        private void ConfigureButton_Click(object sender, RoutedEventArgs e) {
+            EditorWindow = new ExerciseEditorWindow();
+            EditorWindow.Show();
+        }
+
+        private void Window_Closed(object sender, EventArgs e) {
+            EditorWindow.Close();
         }
     }
 }

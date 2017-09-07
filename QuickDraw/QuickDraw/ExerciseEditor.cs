@@ -13,11 +13,22 @@ namespace QuickDraw {
         public const string LAST_OPEN_FILE_NAME = "lastopen";
         public const string FILE_EXTENSION = "qdc";
         public const string FILE_DIALOG_FILTER = "QuickDraw Image Collections(*." + FILE_EXTENSION + ")|*" + FILE_EXTENSION;
+        
+        Exercise CurrentExercise = new Exercise();
 
+        int _Minutes;
+        int _Seconds;
 
-        Exercise CurrentExercise;
+        public int Minutes { get => _Minutes; set { _Minutes = value; UpdateTime(); } }
+        public int Seconds { get => _Seconds; set { _Seconds = value; UpdateTime(); } }
+        public int PlaySoundAt { get => CurrentExercise.StartSoundAt; set => CurrentExercise.StartSoundAt = value; }
+        public int PlaySoundEvery { get => CurrentExercise.PlaySoundEvery; set => CurrentExercise.PlaySoundEvery = value; }
 
         public ExerciseEditor() {
+        }
+
+        private void UpdateTime() {
+            CurrentExercise.TimerDuration = 60 * _Minutes + _Seconds;
         }
 
         private void AddImagePaths(ICollection<string> imagePaths) {

@@ -3,10 +3,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:QuickDraw"
         mc:Ignorable="d"
-        Title="Exercise Editor" Height="300" Width="300">
+        Title="Exercise Editor" Height="506" Width="534.667">
     <Grid Background="Black">
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="357*"/>
+            <RowDefinition Height="76*"/>
+        </Grid.RowDefinitions>
+        <Grid HorizontalAlignment="Center" Height="44" VerticalAlignment="Top" Width="528" Background="#FF262627">
+            <Button x:Name="LoadButton" Content="Load" HorizontalAlignment="Left" Margin="443,10,0,0" VerticalAlignment="Top" Width="75" Background="#FF3A3A3A" Foreground="White" Height="24"/>
+            <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="357,10,0,0" VerticalAlignment="Top" Width="75" Foreground="White" Background="#FF3A3A3A" Height="24"/>
+            <Button x:Name="AddImagesButton" Content="Add Images" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="90" Foreground="White" Background="#FF3A3A3A" Height="24"/>
+            <Button x:Name="ClearImagesButton" Content="Clear Images" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top" Width="90" Foreground="White" Background="#FF3A3A3A" Height="24"/>
+        </Grid>
+        <Grid HorizontalAlignment="Center" Height="76" Margin="0,0.333,0,-0.333" VerticalAlignment="Bottom" Width="528" Background="#FF262626" Grid.Row="2">
+            <xctk:IntegerUpDown x:Name="MinutesInput" Value="{Binding Minutes}" Increment="1" Maximum="100" Minimum="0" Margin="10,32,0,10" FontSize="18" HorizontalAlignment="Left" Width="54" Panel.ZIndex="1" Background="#FF3A3A3A" Foreground="White"/>
+            <xctk:IntegerUpDown x:Name="SecondsInput" Value="{Binding Seconds}" Increment="1" Maximum="100" Minimum="0" Margin="77,32,0,10" FontSize="18" HorizontalAlignment="Left" Width="54" Panel.ZIndex="1" Foreground="White" Background="#FF3A3A3A"/>
+            <Label x:Name="MinutesLabel" Content="Minutes" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" Foreground="White"/>
+            <Label x:Name="SecondsLabel" Content="Seconds" HorizontalAlignment="Left" Margin="77,3,0,0" VerticalAlignment="Top" Width="54" Foreground="White"/>
+            <xctk:IntegerUpDown x:Name="PlaySoundAtInput" Value="{Binding PlaySoundAt}" Increment="1" Maximum="100" Minimum="0" Margin="464,32,0,10" FontSize="18" HorizontalAlignment="Left" Width="54" Panel.ZIndex="1" Foreground="White" Background="#FF3A3A3A"/>
+            <xctk:IntegerUpDown x:Name="PlaySoundEveryInput" Value="{Binding PlaySoundEvery}" Increment="1" Maximum="100" Minimum="0" Margin="395,32,0,10" FontSize="18" HorizontalAlignment="Left" Width="54" Panel.ZIndex="1" Background="#FF3A3A3A" Foreground="White"/>
+            <Label x:Name="PlaySoundEveryLabel" Content="Play sound every" HorizontalAlignment="Left" Margin="395,10,0,0" VerticalAlignment="Top" Width="56" Foreground="White" FontSize="6"/>
+            <Label x:Name="PlaySoundAtLabel" Content="Play sound at" HorizontalAlignment="Left" Margin="462,10,0,0" VerticalAlignment="Top" Width="56" Foreground="White" FontSize="6"/>
+        </Grid>
+
+
     </Grid>
 </Window>

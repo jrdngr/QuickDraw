@@ -17,8 +17,12 @@ namespace QuickDraw {
     /// Interaction logic for ExerciseEditorWindow.xaml
     /// </summary>
     public partial class ExerciseEditorWindow : Window {
+
+        ExerciseEditor CurrentExerciseEditor = new ExerciseEditor();
+
         public ExerciseEditorWindow() {
             InitializeComponent();
+            this.DataContext = CurrentExerciseEditor;
         }
     }
 }
