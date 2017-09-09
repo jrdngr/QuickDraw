@@ -11,7 +11,7 @@ namespace QuickDraw {
     [Serializable]
     public class Exercise {
 
-        List<string> ImagePaths;
+        List<string> _ImagePaths;
         List<string> UnseenImages;
 
         int CurrentIndex = 0;
@@ -25,9 +25,10 @@ namespace QuickDraw {
         public bool Randomize { get => _Randomize; set => _Randomize = value; }
         public int TimerDuration { get => _TimerDuration; set => _TimerDuration = value; }
         public int PlaySoundAt { get => _PlaySoundAt; set => _PlaySoundAt = value; }
+        public List<string> ImagePaths { get => _ImagePaths; set => _ImagePaths = value; }
 
         public Exercise() {
-            ImagePaths = new List<string>();
+            _ImagePaths = new List<string>();
             UnseenImages = new List<string>(ImagePaths);
         }
 
@@ -37,7 +38,7 @@ namespace QuickDraw {
         }
 
         public string GetNextImage() {
-            if (ImagePaths.Count == 0) {
+            if (_ImagePaths.Count == 0) {
                 return null;
             }
             if (UnseenImages.Count == 0) {
@@ -60,23 +61,23 @@ namespace QuickDraw {
         }
 
         public bool HasImages() {
-            return ImagePaths.Count > 0;
+            return _ImagePaths.Count > 0;
         }
 
         public void AddImagePaths(ICollection<string> imagePaths) {
-            ImagePaths.AddRange(imagePaths);
+            _ImagePaths.AddRange(imagePaths);
             UnseenImages.AddRange(imagePaths);
         }
 
         public void RemoveImagePaths(ICollection<string> imagePaths) {
             foreach (string path in imagePaths) {
-                ImagePaths.Remove(path);
+                _ImagePaths.Remove(path);
                 UnseenImages.Remove(path);
             }
         }
 
         public void ClearImages() {
-            ImagePaths = new List<string>();
+            _ImagePaths = new List<string>();
             UnseenImages = new List<string>(ImagePaths);
             CurrentIndex = 0;
         }

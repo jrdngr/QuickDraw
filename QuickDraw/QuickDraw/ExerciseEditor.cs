@@ -6,9 +6,24 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace QuickDraw {
     class ExerciseEditor : INotifyPropertyChanged {
+
+        public class ImageBrowserItem {
+            readonly string _FilePath;
+            readonly BitmapImage _Thumbnail;
+
+            public ImageBrowserItem(string path, BitmapImage thumbnail) {
+                _FilePath = path;
+                _Thumbnail = thumbnail;
+            }
+
+            public string FileName { get => Path.GetFileName(_FilePath).ToString();}
+            public string FilePath { get => _FilePath; }
+            public BitmapImage Thumbnail { get => _Thumbnail;}
+        }
 
         readonly ExerciseViewer Viewer;
 
@@ -21,6 +36,19 @@ namespace QuickDraw {
         public int Seconds { get => _Seconds; set { _Seconds = value; UpdateTime(); } }
         public int PlaySoundAt { get => Viewer.CurrentExercise.PlaySoundAt; set => Viewer.CurrentExercise.PlaySoundAt = value; }
         public bool Randomize { get => Viewer.CurrentExercise.Randomize; set => Viewer.CurrentExercise.Randomize = value; }
+        public List<ImageBrowserItem> Images {
+            get {
+                List<ImageBrowserItem> items = new List<ImageBrowserItem>();
+                foreach (string path in Viewer.CurrentExercise.ImagePaths) { 
+                    BitmapImage image = new BitmapImage();
+                    image.BeginInit();
+                    image.UriSource = new Uri(path);
+                    image.EndInit();
+                    items.Add(new ImageBrowserItem(path, image));
+                }
+                return items;
+            }
+        }
         
 
         public ExerciseEditor(ExerciseViewer viewer) {
@@ -37,7 +65,7 @@ namespace QuickDraw {
             PropertyChanged(this, new PropertyChangedEventArgs("PlaySoundAt"));
             PropertyChanged(this, new PropertyChangedEventArgs("Seconds"));
             PropertyChanged(this, new PropertyChangedEventArgs("Minutes"));
-
+            PropertyChanged(this, new PropertyChangedEventArgs("Images"));
         }
 
         private void UpdateTime() {

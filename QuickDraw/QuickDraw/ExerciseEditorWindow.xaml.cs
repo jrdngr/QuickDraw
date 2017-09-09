@@ -72,6 +72,7 @@ namespace QuickDraw {
                     if (setViewerImage) {
                         Viewer.SetNextImage();
                     }
+                    Editor.GetLoadedValues();
                 } catch (Exception ex) {
                     System.Windows.MessageBox.Show("Could not open one or more files: " + ex.Message);
                 }
@@ -81,6 +82,17 @@ namespace QuickDraw {
         private void ClearImagesButton_Click(object sender, RoutedEventArgs e) {
             Viewer.CurrentExercise.ClearImages();
             Viewer.SetNextImage();
+            Editor.GetLoadedValues();
+        }
+
+        private void RemoveSelectedButton_Click(object sender, RoutedEventArgs e) {
+            List<string> filePaths = new List<string>();
+            foreach (object item in ImageListBox.SelectedItems) {
+                ExerciseEditor.ImageBrowserItem browserItem = (ExerciseEditor.ImageBrowserItem)item;
+                filePaths.Add(browserItem.FilePath);
+            }
+            Viewer.CurrentExercise.RemoveImagePaths(filePaths);
+            Editor.GetLoadedValues();
         }
         
         private void Window_Loaded(object sender, RoutedEventArgs args) {
