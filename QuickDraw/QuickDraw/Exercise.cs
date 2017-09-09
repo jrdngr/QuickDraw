@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace QuickDraw {
     using Seconds = System.Int32;
 
     [Serializable]
-    class Exercise {
+    public class Exercise {
 
         List<string> ImagePaths;
         List<string> UnseenImages;
@@ -17,22 +18,28 @@ namespace QuickDraw {
         [NonSerialized]
         Random rnd = new Random();
 
-        bool _Randomize;
+        bool _Randomize = true;
         Seconds _TimerDuration = 30;
-        Seconds _StartSoundAt = 0;
-        Seconds _PlaySoundEvery = 0;
+        Seconds _PlaySoundAt = 0;
 
         public bool Randomize { get => _Randomize; set => _Randomize = value; }
         public int TimerDuration { get => _TimerDuration; set => _TimerDuration = value; }
-        public int StartSoundAt { get => _StartSoundAt; set => _StartSoundAt = value; }
-        public int PlaySoundEvery { get => _PlaySoundEvery; set => _PlaySoundEvery = value; }
+        public int PlaySoundAt { get => _PlaySoundAt; set => _PlaySoundAt = value; }
 
         public Exercise() {
             ImagePaths = new List<string>();
             UnseenImages = new List<string>(ImagePaths);
         }
 
+        [OnDeserialized]
+        public void OnDeserialization(StreamingContext context) {
+            rnd = new Random();
+        }
+
         public string GetNextImage() {
+            if (ImagePaths.Count == 0) {
+                return null;
+            }
             if (UnseenImages.Count == 0) {
                 UnseenImages = new List<string>(ImagePaths);
             }
@@ -42,7 +49,11 @@ namespace QuickDraw {
             } else {
                 nextIndex = CurrentIndex + 1;
             }
-            CurrentIndex = nextIndex;
+            if (nextIndex >= UnseenImages.Count) {
+                Reset();
+            } else {
+                CurrentIndex = nextIndex;
+            }
             string nextPath = UnseenImages[nextIndex];
             UnseenImages.RemoveAt(nextIndex);
             return nextPath;
@@ -53,8 +64,8 @@ namespace QuickDraw {
         }
 
         public void AddImagePaths(ICollection<string> imagePaths) {
-            ImagePaths.AddRange(ImagePaths);
-            UnseenImages.AddRange(ImagePaths);
+            ImagePaths.AddRange(imagePaths);
+            UnseenImages.AddRange(imagePaths);
         }
 
         public void RemoveImagePaths(ICollection<string> imagePaths) {

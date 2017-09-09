@@ -9,7 +9,9 @@
         Height="600"
         Width="275"
         WindowStartupLocation="Manual" 
-        Left="1000" Top="0">
+        Left="1000" Top="0"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed">
     <Grid Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="413*"/>
