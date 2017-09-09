@@ -85,18 +85,28 @@ namespace QuickDraw {
             Editor.GetLoadedValues();
         }
 
-        private void RemoveSelectedButton_Click(object sender, RoutedEventArgs e) {
+        private void RemoveButton_Click(object sender, RoutedEventArgs e) {
             List<string> filePaths = new List<string>();
             foreach (object item in ImageListBox.SelectedItems) {
                 ExerciseEditor.ImageBrowserItem browserItem = (ExerciseEditor.ImageBrowserItem)item;
+                Console.WriteLine(browserItem.FileName);
                 filePaths.Add(browserItem.FilePath);
             }
             Viewer.CurrentExercise.RemoveImagePaths(filePaths);
             Editor.GetLoadedValues();
         }
-        
+
+        private void MoveUpButton_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void MoveDownButton_Click(object sender, RoutedEventArgs e) {
+
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs args) {
             Editor.GetLoadedValues();
         }
+
     }
 }

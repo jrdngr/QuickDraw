@@ -56,6 +56,7 @@ namespace QuickDraw {
                 EditorWindow = new ExerciseEditorWindow(Viewer);
                 EditorWindow.Top = this.Top;
                 EditorWindow.Left = this.Left - EditorWindow.Width;
+                EditorWindow.Height = this.Height;
                 EditorWindow.Show();
             } else if (!EditorWindow.IsFocused) {
                 EditorWindow.Focus();

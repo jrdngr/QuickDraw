@@ -76,6 +76,14 @@ namespace QuickDraw {
             }
         }
 
+        public void ShiftPathsUp(ICollection<string> imagePaths) {
+
+        }
+
+        public void ShiftPathsdown(ICollection<string> imagePaths) {
+
+        }
+
         public void ClearImages() {
             _ImagePaths = new List<string>();
             UnseenImages = new List<string>(ImagePaths);
