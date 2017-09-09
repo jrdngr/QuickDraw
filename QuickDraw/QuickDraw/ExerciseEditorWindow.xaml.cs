@@ -49,6 +49,7 @@ namespace QuickDraw {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 try {
                     Viewer.CurrentExercise = Utils.LoadExerciseFromFile(openFileDialog.FileName);
+                    Editor.GetLoadedValues();
                     Viewer.SetNextImage();
                 } catch (Exception ex) {
                     System.Windows.MessageBox.Show("Could not open file: " + ex.Message);
@@ -82,5 +83,8 @@ namespace QuickDraw {
             Viewer.SetNextImage();
         }
         
+        private void Window_Loaded(object sender, RoutedEventArgs args) {
+            Editor.GetLoadedValues();
+        }
     }
 }

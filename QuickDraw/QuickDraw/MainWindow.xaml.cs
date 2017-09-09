@@ -54,6 +54,8 @@ namespace QuickDraw {
         private void ConfigureButton_Click(object sender, RoutedEventArgs e) {
             if (EditorWindow == null || !EditorWindow.IsLoaded) {
                 EditorWindow = new ExerciseEditorWindow(Viewer);
+                EditorWindow.Top = this.Top;
+                EditorWindow.Left = this.Left - EditorWindow.Width;
                 EditorWindow.Show();
             } else if (!EditorWindow.IsFocused) {
                 EditorWindow.Focus();

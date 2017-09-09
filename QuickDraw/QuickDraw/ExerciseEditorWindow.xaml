@@ -6,7 +6,8 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:QuickDraw"
         mc:Ignorable="d"
-        Title="Exercise Editor" Height="506" Width="534.667">
+        Title="Exercise Editor" Height="506" Width="534.667"
+        Loaded="Window_Loaded">
     <Grid Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="44*"/>

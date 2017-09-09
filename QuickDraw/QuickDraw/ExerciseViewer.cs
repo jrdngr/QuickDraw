@@ -96,6 +96,7 @@ namespace QuickDraw {
 
         public void ResetCount() {
             _CurrentCount = 0;
+            PropertyChanged(this, new PropertyChangedEventArgs("CurrentCount"));
         }
 
         public void ResetTime() {
