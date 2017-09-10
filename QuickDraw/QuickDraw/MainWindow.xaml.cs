@@ -20,7 +20,7 @@ namespace QuickDraw {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window {
+    public sealed partial class MainWindow : Window, IDisposable {
 
         ExerciseViewer Viewer = new ExerciseViewer();
         ExerciseEditorWindow EditorWindow;
@@ -88,5 +88,7 @@ namespace QuickDraw {
             lastOpenPath = System.IO.Path.Combine(lastOpenPath, Utils.LAST_OPEN_FILE_NAME);
             Utils.SaveExerciseToFile(Viewer.CurrentExercise, lastOpenPath);
         }
+
+        public void Dispose() => Viewer.Dispose();
     }
 }

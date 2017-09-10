@@ -10,7 +10,7 @@ using System.Timers;
 namespace QuickDraw {
     using Seconds = System.Int32;
 
-    public class ExerciseViewer : INotifyPropertyChanged {
+    public sealed class ExerciseViewer : INotifyPropertyChanged, IDisposable {
 
         Exercise _CurrentExercise;
 
@@ -108,5 +108,6 @@ namespace QuickDraw {
             CurrentExercise = exercise;
         }
 
+        public void Dispose() => ((IDisposable)NextImageTimer).Dispose();
     }
 }

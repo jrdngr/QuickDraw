@@ -33,7 +33,7 @@ namespace QuickDraw {
         }
 
         [OnDeserialized]
-        public void OnDeserialization(StreamingContext context) {
+        private void OnDeserialization(StreamingContext context) {
             rnd = new Random();
         }
 
