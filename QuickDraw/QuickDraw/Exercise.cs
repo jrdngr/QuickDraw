@@ -76,11 +76,40 @@ namespace QuickDraw {
             }
         }
 
-        public void ShiftPathsUp(ICollection<string> imagePaths) {
-
+        private static void Swap(List<string> list, int index1, int index2) {
+            if (index1 < 0 || index2 < 0 || index1 >= list.Count || index2 >= list.Count) {
+                return;
+            }
+            string temp = list[index1];
+            list[index1] = list[index2];
+            list[index2] = temp;
         }
 
-        public void ShiftPathsdown(ICollection<string> imagePaths) {
+        private List<string> GetOrderedPaths(ICollection<string> imagePaths) {
+            List<string> orderedPaths = new List<string>(imagePaths);
+            orderedPaths.Sort((x, y) => _ImagePaths.IndexOf(x).CompareTo(_ImagePaths.IndexOf(y)));
+            return orderedPaths;
+        }
+
+        public void ShiftPathsUp(ICollection<string> imagePaths) {
+            List<string> orderedPaths = GetOrderedPaths(imagePaths);
+            if (orderedPaths.Count > 0 && _ImagePaths.IndexOf(orderedPaths.First()) > 0) {
+                foreach (string path in orderedPaths) {
+                    int index = _ImagePaths.IndexOf(path);
+                    Swap(_ImagePaths, index, index - 1);
+                }
+            }
+        }
+
+        public void ShiftPathsDown(ICollection<string> imagePaths) {
+            List<string> orderedPaths = GetOrderedPaths(imagePaths);
+            if (orderedPaths.Count > 0 && _ImagePaths.IndexOf(orderedPaths.Last()) <= _ImagePaths.Count - 2) {
+                orderedPaths.Reverse();
+                foreach (string path in orderedPaths) {
+                    int index = _ImagePaths.IndexOf(path);
+                    Swap(_ImagePaths, index, index + 1);
+                }
+            }
 
         }
 

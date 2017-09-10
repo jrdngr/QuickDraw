@@ -85,12 +85,27 @@ namespace QuickDraw {
             Editor.GetLoadedValues();
         }
 
-        private void RemoveButton_Click(object sender, RoutedEventArgs e) {
+        private List<string> GetSelectedPaths() {
             List<string> filePaths = new List<string>();
             foreach (object item in ImageListBox.SelectedItems) {
                 ExerciseEditor.ImageBrowserItem browserItem = (ExerciseEditor.ImageBrowserItem)item;
                 filePaths.Add(browserItem.FilePath);
             }
+            return filePaths;
+        }
+
+        private void SetSelectedPaths(List<string> paths) {
+            foreach (object item in ImageListBox.Items) {
+                ExerciseEditor.ImageBrowserItem browserItem = (ExerciseEditor.ImageBrowserItem)item;
+                if (paths.Contains(browserItem.FilePath)) {
+                    ImageListBox.SelectedItems.Add(browserItem);
+                }
+            }
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e) {
+            List<string> filePaths = GetSelectedPaths();
+
             Viewer.CurrentExercise.RemoveImagePaths(filePaths);
             if (filePaths.Contains(Viewer.CurrentImagePath)) {
                 Viewer.SetNextImage();
@@ -99,11 +114,17 @@ namespace QuickDraw {
         }
 
         private void MoveUpButton_Click(object sender, RoutedEventArgs e) {
-
+            List<string> selectedPaths = GetSelectedPaths();
+            Viewer.CurrentExercise.ShiftPathsUp(selectedPaths);
+            Editor.GetLoadedValues();
+            SetSelectedPaths(selectedPaths);
         }
 
         private void MoveDownButton_Click(object sender, RoutedEventArgs e) {
-
+            List<string> selectedPaths = GetSelectedPaths();
+            Viewer.CurrentExercise.ShiftPathsDown(selectedPaths);
+            Editor.GetLoadedValues();
+            SetSelectedPaths(selectedPaths);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs args) {

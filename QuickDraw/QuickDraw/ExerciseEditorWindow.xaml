@@ -33,15 +33,15 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="{Binding Thumbnail}" Height="100"/>
+                        <Image Source="{Binding Thumbnail}" Height="50"/>
                         <Label Content="{Binding FileName}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <Button x:Name="RemoveButton" Content="Remove" Margin="0,146,10,189" Grid.Row="1" VerticalAlignment="Center" Background="#FF3A3A3A" Foreground="White" HorizontalAlignment="Right" Width="75" Click="RemoveButton_Click"/>
-        <Button x:Name="MoveUpButton" Content="Move Up" Margin="0,171,10,164" Grid.Row="1" VerticalAlignment="Center" Background="#FF3A3A3A" Foreground="White" HorizontalAlignment="Right" Width="75" Click="MoveUpButton_Click" IsEnabled="False"/>
-        <Button x:Name="MoveDownButton" Content="Move Down" Margin="0,196,10,139" Grid.Row="1" VerticalAlignment="Center" Background="#FF3A3A3A" Foreground="White" HorizontalAlignment="Right" Width="75" Click="MoveDownButton_Click" IsEnabled="False"/>
+        <Button x:Name="MoveUpButton" Content="Move Up" Margin="0,171,10,164" Grid.Row="1" VerticalAlignment="Center" Background="#FF3A3A3A" Foreground="White" HorizontalAlignment="Right" Width="75" Click="MoveUpButton_Click"/>
+        <Button x:Name="MoveDownButton" Content="Move Down" Margin="0,196,10,139" Grid.Row="1" VerticalAlignment="Center" Background="#FF3A3A3A" Foreground="White" HorizontalAlignment="Right" Width="75" Click="MoveDownButton_Click"/>
 
 
     </Grid>

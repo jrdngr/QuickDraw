@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 namespace QuickDraw {
     class ExerciseEditor : INotifyPropertyChanged {
 
-        public const int THUMBNAIL_WIDTH = 100;
+        public const int THUMBNAIL_WIDTH = 50;
 
         public class ImageBrowserItem {
             readonly string _FilePath;
@@ -76,19 +76,6 @@ namespace QuickDraw {
             PropertyChanged(this, new PropertyChangedEventArgs("Seconds"));
             PropertyChanged(this, new PropertyChangedEventArgs("Minutes"));
         }
-
-        private void AddImagePaths(ICollection<string> imagePaths) {
-            Viewer.CurrentExercise.AddImagePaths(imagePaths);
-        }
-
-        private void RemoveImages(ICollection<string> imagePaths) {
-            Viewer.CurrentExercise.RemoveImagePaths(imagePaths);
-        }
-
-        private void ClearImages() {
-            Viewer.CurrentExercise.ClearImages();
-        }
-        
 
     }
 }
