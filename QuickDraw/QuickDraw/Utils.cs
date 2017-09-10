@@ -10,8 +10,8 @@ namespace QuickDraw {
     class Utils {
 
         public const string APPDATA_FOLDER_NAME = "QuickDraw";
-        public const string LAST_OPEN_FILE_NAME = "lastopen.qdc";
-        public const string FILE_EXTENSION = "qdc";
+        public const string FILE_EXTENSION = "qde";
+        public const string LAST_OPEN_FILE_NAME = "lastopen." + FILE_EXTENSION;
         public const string FILE_DIALOG_FILTER = "QuickDraw Image Collections(*." + FILE_EXTENSION + ")|*" + FILE_EXTENSION;
         public const string IMAGE_FILE_DIALOG_FILTER = "Image Files(*.png;*.jpg;*.gif;*.bmp)|*.png;*.jpg;*.gif;*.bmp";
 

@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuickDraw"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="QuickDraw"
         Height="600"
         Width="275"
         WindowStartupLocation="Manual" 
         Left="1000" Top="0"
         Loaded="Window_Loaded"
-        Closed="Window_Closed">
+        Closed="Window_Closed" Icon="QuickDrawIcon.ico">
     <Grid Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="413*"/>
