@@ -11,6 +11,8 @@ using System.Windows.Media.Imaging;
 namespace QuickDraw {
     class ExerciseEditor : INotifyPropertyChanged {
 
+        public const int THUMBNAIL_WIDTH = 100;
+
         public class ImageBrowserItem {
             readonly string _FilePath;
             readonly BitmapImage _Thumbnail;
@@ -42,6 +44,7 @@ namespace QuickDraw {
                 foreach (string path in Viewer.CurrentExercise.ImagePaths) { 
                     BitmapImage image = new BitmapImage();
                     image.BeginInit();
+                    image.DecodePixelWidth = THUMBNAIL_WIDTH;
                     image.UriSource = new Uri(path);
                     image.EndInit();
                     items.Add(new ImageBrowserItem(path, image));

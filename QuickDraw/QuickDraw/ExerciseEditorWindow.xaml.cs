@@ -89,10 +89,12 @@ namespace QuickDraw {
             List<string> filePaths = new List<string>();
             foreach (object item in ImageListBox.SelectedItems) {
                 ExerciseEditor.ImageBrowserItem browserItem = (ExerciseEditor.ImageBrowserItem)item;
-                Console.WriteLine(browserItem.FileName);
                 filePaths.Add(browserItem.FilePath);
             }
             Viewer.CurrentExercise.RemoveImagePaths(filePaths);
+            if (filePaths.Contains(Viewer.CurrentImagePath)) {
+                Viewer.SetNextImage();
+            }
             Editor.GetLoadedValues();
         }
 

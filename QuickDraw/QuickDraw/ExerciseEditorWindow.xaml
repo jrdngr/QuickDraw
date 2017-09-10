@@ -27,7 +27,7 @@
             <Label x:Name="SecondsLabel" Content="Seconds" HorizontalAlignment="Left" Margin="77,3,0,0" VerticalAlignment="Top" Width="54" Foreground="White"/>
             <xctk:IntegerUpDown x:Name="PlaySoundAtInput" Value="{Binding PlaySoundAt}" Increment="1" Maximum="100" Minimum="0" Margin="464,32,0,10" FontSize="18" HorizontalAlignment="Left" Width="54" Panel.ZIndex="1" Foreground="White" Background="#FF3A3A3A"/>
             <Label x:Name="PlaySoundAtLabel" Content="Play sound at" HorizontalAlignment="Left" Margin="456,5,0,0" VerticalAlignment="Top" Width="72" Foreground="White" FontSize="10"/>
-            <CheckBox x:Name="RandomizeCheckBox" IsChecked="{Binding Randomize}" Content="Randomize" HorizontalAlignment="Left" Margin="351,32,0,0" VerticalAlignment="Top" Foreground="White"/>
+            <CheckBox x:Name="RandomizeCheckBox" IsChecked="{Binding Randomize}" Content="Randomize" HorizontalAlignment="Left" Margin="369,41,0,0" VerticalAlignment="Top" Foreground="White"/>
         </Grid>
         <ListBox x:Name="ImageListBox" ItemsSource="{Binding Images}" Margin="10,10,90,10" Grid.Row="1" SelectionMode="Extended" Background="Black">
             <ListBox.ItemTemplate>

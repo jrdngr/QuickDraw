@@ -76,6 +76,10 @@ namespace QuickDraw {
                 Viewer.CurrentExercise = Utils.LoadExerciseFromFile(lastOpenFile);
                 Viewer.SetNextImage();
             }
+
+            if (!Viewer.HasImages()) {
+                ConfigureButton_Click(sender, args);
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e) {
