@@ -37,6 +37,7 @@ namespace QuickDraw {
         public int Minutes { get => _Minutes; set { _Minutes = value; UpdateTime(); } }
         public int Seconds { get => _Seconds; set { _Seconds = value; UpdateTime(); } }
         public int PlaySoundAt { get => Viewer.CurrentExercise.PlaySoundAt; set => Viewer.CurrentExercise.PlaySoundAt = value; }
+        public bool PlaySound { get => Viewer.CurrentExercise.PlaySound; set => Viewer.CurrentExercise.PlaySound = value; }
         public bool Randomize { get => Viewer.CurrentExercise.Randomize; set => Viewer.CurrentExercise.Randomize = value; }
         public List<ImageBrowserItem> Images {
             get {

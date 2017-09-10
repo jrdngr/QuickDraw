@@ -73,7 +73,9 @@ namespace QuickDraw {
                 _TimeRemaining -= 1;
                 PropertyChanged(this, new PropertyChangedEventArgs("TimeRemaining"));
                 if (_TimeRemaining == CurrentExercise.PlaySoundAt) {
-                    PlaySound();
+                    if (CurrentExercise.PlaySound) {
+                        PlaySound();
+                    }
                 }
             } else {
                 _CurrentCount += 1;

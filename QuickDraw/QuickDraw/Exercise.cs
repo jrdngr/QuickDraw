@@ -19,6 +19,7 @@ namespace QuickDraw {
         Random rnd = new Random();
 
         bool _Randomize = true;
+        bool _PlaySound = true;
         Seconds _TimerDuration = 30;
         Seconds _PlaySoundAt = 0;
 
@@ -26,6 +27,7 @@ namespace QuickDraw {
         public int TimerDuration { get => _TimerDuration; set => _TimerDuration = value; }
         public int PlaySoundAt { get => _PlaySoundAt; set => _PlaySoundAt = value; }
         public List<string> ImagePaths { get => _ImagePaths; set => _ImagePaths = value; }
+        public bool PlaySound { get => _PlaySound; set => _PlaySound = value; }
 
         public Exercise() {
             _ImagePaths = new List<string>();
