@@ -11,20 +11,27 @@ using System.Windows.Media.Imaging;
 namespace QuickDraw {
     class ExerciseEditor : INotifyPropertyChanged {
 
-        public const int THUMBNAIL_WIDTH = 50;
+        public const int THUMBNAIL_WIDTH = 100;
 
         public class ImageBrowserItem {
             readonly string _FilePath;
-            readonly BitmapImage _Thumbnail;
 
-            public ImageBrowserItem(string path, BitmapImage thumbnail) {
+            public ImageBrowserItem(string path) {
                 _FilePath = path;
-                _Thumbnail = thumbnail;
             }
 
             public string FileName { get => Path.GetFileName(_FilePath).ToString();}
             public string FilePath { get => _FilePath; }
-            public BitmapImage Thumbnail { get => _Thumbnail;}
+            public BitmapImage Thumbnail {
+                get {
+                    BitmapImage image = new BitmapImage();
+                    image.BeginInit();
+                    image.DecodePixelWidth = THUMBNAIL_WIDTH;
+                    image.UriSource = new Uri(_FilePath);
+                    image.EndInit();
+                    return image;
+                }
+            }
         }
 
         readonly ExerciseViewer Viewer;
@@ -42,13 +49,8 @@ namespace QuickDraw {
         public List<ImageBrowserItem> Images {
             get {
                 List<ImageBrowserItem> items = new List<ImageBrowserItem>();
-                foreach (string path in Viewer.CurrentExercise.ImagePaths) { 
-                    BitmapImage image = new BitmapImage();
-                    image.BeginInit();
-                    image.DecodePixelWidth = THUMBNAIL_WIDTH;
-                    image.UriSource = new Uri(path);
-                    image.EndInit();
-                    items.Add(new ImageBrowserItem(path, image));
+                foreach (string path in Viewer.CurrentExercise.ImagePaths) {
+                    items.Add(new ImageBrowserItem(path));
                 }
                 return items;
             }
