@@ -175,5 +175,13 @@
   <ItemGroup>
     <Resource Include="QuickDrawIcon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <FileAssociation Include=".qde">
+      <Visible>False</Visible>
+      <Description>QuickDraw Exercise</Description>
+      <Progid>QuickDraw</Progid>
+      <DefaultIcon>QuickDrawIcon.ico</DefaultIcon>
+    </FileAssociation>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

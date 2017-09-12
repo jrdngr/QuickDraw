@@ -64,18 +64,23 @@ namespace QuickDraw {
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs args) {
+
             string lastOpenPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Utils.APPDATA_FOLDER_NAME);
 
             if (!Directory.Exists(lastOpenPath)) {
                 Directory.CreateDirectory(lastOpenPath);
             }
 
+            string clickedPath = Utils.GetFilePathFromClickedFile();
             string lastOpenFile = System.IO.Path.Combine(lastOpenPath, Utils.LAST_OPEN_FILE_NAME);
 
-            if (File.Exists(lastOpenFile)) {
+            if (File.Exists(clickedPath)) {
+                Viewer.CurrentExercise = Utils.LoadExerciseFromFile(clickedPath);
+            } else if (File.Exists(lastOpenFile)) {
                 Viewer.CurrentExercise = Utils.LoadExerciseFromFile(lastOpenFile);
-                Viewer.SetNextImage();
             }
+            
+            Viewer.SetNextImage();
 
             if (!Viewer.HasImages()) {
                 ConfigureButton_Click(sender, args);

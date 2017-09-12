@@ -16,12 +16,18 @@ namespace QuickDraw {
         public const string IMAGE_FILE_DIALOG_FILTER = "Image Files(*.png;*.jpg;*.gif;*.bmp)|*.png;*.jpg;*.gif;*.bmp";
 
         public static Exercise LoadExerciseFromFile(string filePath) {
-            System.Runtime.Serialization.IFormatter formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-            Stream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
-            Exercise exercise = (Exercise)formatter.Deserialize(stream);
-            stream.Close();
+            try {
 
-            return exercise;
+                System.Runtime.Serialization.IFormatter formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                Stream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                Exercise exercise = (Exercise)formatter.Deserialize(stream);
+                stream.Close();
+
+                return exercise;
+            } catch (Exception e) {
+                System.Windows.MessageBox.Show("Error loading file:\n" + e);
+                return new Exercise();
+            }
         }
 
         public static void SaveExerciseToFile(Exercise exercise, string fileName) {
@@ -30,6 +36,15 @@ namespace QuickDraw {
             Stream stream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, exercise);
             stream.Close();
+        }
+
+        public static string GetFilePathFromClickedFile() {
+            string[] args = Environment.GetCommandLineArgs();
+            if (args == null || args.Length < 2) {
+                return null;
+            } else {
+                return args[1];
+            }
         }
 
     }
